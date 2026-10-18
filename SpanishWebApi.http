@@ -1,0 +1,6 @@
+@SpanishWebApi_HostAddress = http://localhost:5022
+
+GET {{SpanishWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
