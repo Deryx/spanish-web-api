@@ -12,14 +12,11 @@ WORKDIR /app
 
 ENV ASPNETCORE_HTTP_PORTS=8080 \
     ASPNETCORE_ENVIRONMENT=Production \
-    ConnectionStrings__SpanishDb="Data Source=/data/spanish.db"
-
-# database lives in a volume, not in the image
-RUN mkdir /data && chown app:app /data
+    ConnectionStrings__SpanishDb="Data Source=/app/Data/spanish.db;Mode=ReadOnly"
 
 COPY --from=build /app/publish .
+COPY --chown=app:app Data/spanish.db ./Data/spanish.db
 
 USER app
 EXPOSE 8080
-VOLUME /data
 ENTRYPOINT ["dotnet", "SpanishWebApi.dll"]

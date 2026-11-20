@@ -4,6 +4,7 @@ obj/
 .vs/
 .vscode/
 *.db
+!Data/spanish.db
 *.db-shm
 *.db-wal
 Dockerfile

@@ -43,4 +43,5 @@ else
 app.UseCors(app.Environment.IsDevelopment() ? "FlutterDev" : "SpanishTutorNext");
 app.MapControllers();
 
+app.MapGet("/health", () => "ok");
 app.Run();
