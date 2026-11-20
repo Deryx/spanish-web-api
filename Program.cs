@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:3000",
-            "https://spanish-tutor-next-c19u-eight.vercel.app/")
+            "https://spanish-tutor-next-c19u-eight.vercel.app")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
