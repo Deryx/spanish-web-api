@@ -15,13 +15,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("SpanishTutorNext", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:3000",
-            "https://spanish-tutor-next-c19u-eight.vercel.app")
+                "http://localhost:3000",
+                "https://spanish-tutor-next-c19u-eight.vercel.app")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 
-    // Flutter web (dev only): runs on a random localhost port
     options.AddPolicy("FlutterDev", policy =>
     {
         policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
@@ -42,7 +41,8 @@ else
     app.UseHttpsRedirection();   // skip the redirect in development
 }
 
-app.UseCors("Frontend");
+app.UseRouting();
+app.UseCors("SpanishTutorNext");
 app.MapControllers();
 
 app.MapGet("/health", () => "ok");
