@@ -148,3 +148,4 @@ C:\Users\deryx\SpanishWebApi\obj\Debug\net10.0\ref\SpanishWebApi.dll
 C:\Users\deryx\SpanishWebApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\deryx\SpanishWebApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\deryx\SpanishWebApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\deryx\SpanishWebApi\obj\Debug\net10.0\SpanishWebApi.sourcelink.json

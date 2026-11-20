@@ -18,19 +18,29 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
+
+    // Flutter web (dev only): runs on a random localhost port
+    options.AddPolicy("FlutterDev", policy =>
+    {
+        policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();   // skip the redirect in development
+}
 
-app.UseHttpsRedirection();
-app.UseCors("SpanishTutorNext");
+app.UseCors(app.Environment.IsDevelopment() ? "FlutterDev" : "SpanishTutorNext");
 app.MapControllers();
 
 app.Run();

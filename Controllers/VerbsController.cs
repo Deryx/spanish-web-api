@@ -56,21 +56,21 @@ namespace SpanishWebApi.Controllers
             .AsNoTracking()
             .ToListAsync();
 
-    // GET api/verbs/{id}/conjugations-wide — one verb, all tenses
-    [HttpGet("{id:int}/conjugations-wide")]
-    public async Task<ActionResult<List<ConjugationsWide>>> GetConjugationsWide(int id) =>
+    // GET api/verbs/{verbId}/conjugations-wide — one verb, all tenses
+    [HttpGet("{verbId:int}/conjugations-wide")]
+    public async Task<ActionResult<List<ConjugationsWide>>> GetConjugationsWide(int verbId) =>
         await _context.ConjugationsWide
             .AsNoTracking()
-            .Where(c => c.VerbId == id)
+            .Where(c => c.VerbId == verbId)
             .ToListAsync();
 
-    // GET api/verbs/{id}/conjugations-wide/tense/{tenseId} — one verb, one tense
-    [HttpGet("{id:int}/conjugations-wide/tense/{tenseId:int}")]
-    public async Task<ActionResult<ConjugationsWide>> GetConjugationsWideByTense(int id, int tenseId)
+    // GET api/verbs/{verbId}/conjugations-wide/tense/{tenseId} — one verb, one tense
+    [HttpGet("{verbId:int}/conjugations-wide/tense/{tenseId:int}")]
+    public async Task<ActionResult<ConjugationsWide>> GetConjugationsWideByTense(int verbId, int tenseId)
     {
         var row = await _context.ConjugationsWide
             .AsNoTracking()
-            .FirstOrDefaultAsync(c => c.VerbId == id && c.TenseId == tenseId);
+            .FirstOrDefaultAsync(c => c.VerbId == verbId && c.TenseId == tenseId);
 
         return row is null ? NotFound() : row;
     }
