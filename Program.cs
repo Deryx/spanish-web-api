@@ -14,7 +14,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("SpanishTutorNext", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins(
+            "http://localhost:3000",
+            "https://spanish-tutor-next-c19u-eight.vercel.app/")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -40,7 +42,7 @@ else
     app.UseHttpsRedirection();   // skip the redirect in development
 }
 
-app.UseCors(app.Environment.IsDevelopment() ? "FlutterDev" : "SpanishTutorNext");
+app.UseCors("Frontend");
 app.MapControllers();
 
 app.MapGet("/health", () => "ok");
